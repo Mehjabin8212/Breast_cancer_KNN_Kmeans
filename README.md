@@ -1,66 +1,73 @@
-# Breast Cancer KNN & K-Means Project
+# Breast Cancer Diagnosis using KNN & K-Means
 
-This project analyzes a breast cancer dataset using two machine learning techniques: **K-Nearest Neighbors (KNN)** for classification and **K-Means** for clustering. The goal is to evaluate model performance and compare supervised and unsupervised learning approaches.
+This assignment presents a very simplified and intuitive tutorial on how we can better analyze breast cancer data with the help of machine learning. Through using **K-Nearest Neighbors Classification**, as well as **K-Means clustering**, we will be exploring the ways on how we can classify cancer instances or identify any natural grouping within the data.
 
-## 📁 Project Overview
+## What This Project Does
 
-* The notebook loads and preprocesses the breast cancer dataset.
-* Features are standardized for improved model accuracy.
-* A **KNN classifier** is trained to predict cancer diagnoses.
-* A **K-Means clustering model** is used to explore natural data groupings.
-* Evaluation metrics and visualizations are provided.
+The workflow follows a structured pipeline:
 
-## 🔍 Methods Used
+* Converts diagnosis labels into numeric form
 
-### **1. KNN Classification**
+  * **M → 1 (Malignant)**
+  * **B → 0 (Benign)**
+* Drops unnecessary columns such as:
+* Splits the dataset into:
 
-* Standardizes features using `StandardScaler`.
-* Splits the dataset into training and testing sets.
-* Trains a classifier with different values of *k*.
-* Evaluates using accuracy, confusion matrix, and classification report.
+  * **80% Training**
+  * **20% Testing**
+* Applies **K-Means clustering (k = 2)** to observe natural groupings
+* Trains a **KNN classifier (k = 5)** on the scaled training set
+* Evaluates the classification model using standard metrics
+
+## Methods & Workflow
+
+### **1. Preprocessing**
+
+* Loaded the CSV dataset
+* Encoded diagnosis labels (M = 1, B = 0)
+* Removed unnecessary or empty columns
+* Normalized all numeric features with **MinMaxScaler** for consistency
 
 ### **2. K-Means Clustering**
 
-* Applies K-Means to the standardized dataset.
-* Compares clustering output with true labels.
-* Visualizes clusters using PCA-reduced dimensions.
+* Applied **k = 2**, suitable because the dataset has two classes
+* Compared the resulting clusters to the actual diagnosis labels
+* Helped visualize how well unsupervised grouping aligns with real classifications
 
-## 📊 Results Summary
+### **3. KNN Classification**
 
-* KNN provides strong performance for cancer prediction.
-* K-Means shows reasonable clustering structure, though unsupervised methods are naturally less accurate.
+* Used **KNeighborsClassifier (k = 5)**
+* Trained the model using normalized training data
+* Tested on the 20% held-out test set
 
-## 🛠️ Requirements
+## Model Evaluation
 
-To run the notebook, install:
+The KNN classifier performed strongly.
 
-* `numpy`
-* `pandas`
-* `matplotlib`
-* `scikit-learn`
+| Metric    | Score      |
+| --------- | ---------- |
+| Accuracy  | ~0.95–0.97 |
+| Precision | ~0.95      |
+| Recall    | ~0.95      |
+| F1-score  | ~0.95      |
 
-Install using:
+## Files Included
 
-```bash
-pip install numpy pandas matplotlib scikit-learn
-```
+### **Breast_Cancer_Diagnosis.ipynb**
 
-## ▶️ How to Run
+The full notebook containing:
+* Preprocessing
+* K-Means clustering
+* KNN classification
+* Evaluation.
 
-1. Open the `.ipynb` file in Jupyter Notebook, JupyterLab, or VS Code.
-2. Run cells in order.
-3. View outputs such as accuracy scores and clusters.
+### **README.md**
 
-## 📚 Dataset
+A summarized and user-friendly explanation of the entire project.
 
-The project uses the **Breast Cancer Wisconsin dataset** included in `sklearn.datasets`.
+## How to Run
 
-## 📦 Output
+1. Open the notebook in **Google Colab** or **Jupyter Notebook**.
+2. Upload the dataset when prompted.
+3. Run all cells in sequence.
 
-* Model performance metrics
-* Visualizations for clustering
-* Comparative insights on supervised vs. unsupervised learning
-
----
-
-Feel free to ask if you want enhancements, diagrams, or explanations for any section!
